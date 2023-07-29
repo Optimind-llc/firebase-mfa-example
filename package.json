@@ -4,9 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npm run build --workspaces",
+    "start": "npm run build && firebase emulators:start --import=.firebase_emulator"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "firebase-tools": "^12.4.6"
+  },
+  "workspaces": [
+    "front",
+    "functions"
+  ]
 }
