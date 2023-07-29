@@ -9,9 +9,13 @@ However, we hope this will be of some help to you, as the same procedure as in t
 
 ## Setup Example
 
+The operating environment is as follows.
+
+* Node.js 18
+
 ```bash
 $ npm i
-$ npm run start
+$ npm start
 ```
 
 The firebase emulator will be launched, and you can access the following URL in a browser to check the operation.
