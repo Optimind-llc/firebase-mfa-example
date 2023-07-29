@@ -33,10 +33,10 @@ const App = () => {
     const res = await fetch(`/createCustomClaim`, {
       method: 'post',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${temporaryToken}`
       },
       body: JSON.stringify({
-        token: temporaryToken,
         totp,
       })
     });

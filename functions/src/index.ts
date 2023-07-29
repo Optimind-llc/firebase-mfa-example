@@ -31,10 +31,11 @@ export const beforeSignIn = functions.auth.user().beforeSignIn(async (user, cont
 export const createCustomClaim = functions.https.onRequest(async (req, res) => {
   const now = admin.firestore.Timestamp.now().toMillis();
   /**
-   * 🙅‍♂️️️️THIS IS EXAMPLE CODE!️🙅‍♂️
+   * 🙅THIS IS EXAMPLE CODE!️🙅
    * Always validate input values!
    */
-  const doc = admin.firestore().doc(`onetimeToken/${req.body.token}`);
+  const token = req.get('authorization')?.substring('Bearer '.length) ?? '';
+  const doc = admin.firestore().doc(`onetimeToken/${token}`);
   const snap = await doc.get();
   const user = await admin.auth().getUser(snap.get('uid'));
   const signInTime = snap.get('signInTime');
@@ -47,7 +48,7 @@ export const createCustomClaim = functions.https.onRequest(async (req, res) => {
   }
 
   /**
-   * 🙅‍♂️️️️THIS IS EXAMPLE CODE!️🙅‍♂️
+   * 🙅THIS IS EXAMPLE CODE!️🙅
    * DO NOT bring this into a production environment as is.
    * The firebase uid is a value that is also included in the JWT.
    * This means that many people are likely to see that information.
