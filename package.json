@@ -1,5 +1,5 @@
 {
-  "name": "firebase-authentication-totp-example",
+  "name": "firebase-mfa-example",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
