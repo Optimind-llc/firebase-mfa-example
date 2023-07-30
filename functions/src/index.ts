@@ -14,7 +14,7 @@ export const beforeSignIn = functions.auth.user().beforeSignIn(async (user, cont
     return;
   }
 
-  const token = crypto.randomBytes(256).toString('hex');
+  const token = crypto.createHash('sha1').update(crypto.randomBytes(40).toString('hex')).digest('hex');
 
   // If firestore is used, it must be controlled by a firestore rule so that this collection cannot be accessed at all.
   await admin.firestore().doc(`onetimeToken/${token}`).set({
